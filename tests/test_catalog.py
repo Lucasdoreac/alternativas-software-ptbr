@@ -1,4 +1,7 @@
-"""CAMINHO COBERTO: catalog_intake.parse_issue_form e intake (issue form -> registro "reported" válido),
+"""A sugestão de teste usa um nome fictício: um nome real pode entrar no catálogo e transformar o teste de
+registro novo num teste de duplicado (aconteceu com o Krita em 2026-11-20).
+
+CAMINHO COBERTO: catalog_intake.parse_issue_form e intake (issue form -> registro "reported" válido),
 check_source com rede injetada, a CLI `intake` sobre um evento do GitHub, e a guarda de que o site público
 em docs/ só busca: sem formulário de escrita, sem API e sem curadoria exposta.
 
@@ -24,11 +27,11 @@ from catalog_intake import IntakeError, check_source, intake, parse_issue_form  
 
 BODY = """### Nome da alternativa
 
-Krita
+Exemplo Livre de Teste
 
 ### Site oficial do projeto
 
-https://krita.org/
+https://exemplo-livre.org/
 
 ### Substitui qual software
 
@@ -66,7 +69,7 @@ def fake_check(url: str) -> dict:
 class IntakeTest(unittest.TestCase):
     def test_formulario_e_lido_com_sistemas_marcados(self) -> None:
         form = parse_issue_form(BODY)
-        self.assertEqual(form["name"], "Krita")
+        self.assertEqual(form["name"], "Exemplo Livre de Teste")
         self.assertEqual(form["platforms"], ["macOS", "Linux"])
         self.assertEqual(form["area_other"], "")
 
@@ -81,14 +84,14 @@ class IntakeTest(unittest.TestCase):
         self.assertEqual(relation["reference_id"], "photoshop")
 
     def test_duplicado_e_recusado(self) -> None:
-        body = BODY.replace("Krita", "GIMP")
+        body = BODY.replace("Exemplo Livre de Teste", "GIMP")
         with self.assertRaisesRegex(IntakeError, "já está no catálogo"):
             intake(catalog(), parse_issue_form(body), issue_number=8, today="2026-11-20", check=fake_check)
 
     def test_site_que_nao_e_https_publico_e_recusado(self) -> None:
         for url in ("http://krita.org/", "https://localhost/x", "https://127.0.0.1/", "https://10.0.0.2/"):
             with self.assertRaisesRegex(IntakeError, "https público"):
-                intake(catalog(), parse_issue_form(BODY.replace("https://krita.org/", url)), issue_number=9,
+                intake(catalog(), parse_issue_form(BODY.replace("https://exemplo-livre.org/", url)), issue_number=9,
                        today="2026-11-20", check=fake_check)
 
     def test_area_nova_cria_categoria(self) -> None:
@@ -118,7 +121,7 @@ class IntakeTest(unittest.TestCase):
             path = Path(tmp) / "catalog.json"
             path.write_text((ROOT / "docs" / "catalog.json").read_text(encoding="utf-8"), encoding="utf-8")
             event = Path(tmp) / "event.json"
-            body = BODY.replace("https://krita.org/", "http://krita.org/")  # recusado antes de qualquer rede
+            body = BODY.replace("https://exemplo-livre.org/", "http://exemplo-livre.org/")  # recusado antes de qualquer rede
             event.write_text(json.dumps({"issue": {"number": 11, "body": body}}), encoding="utf-8")
             run = subprocess.run([sys.executable, str(ROOT / "catalog_tool.py"), "--catalog", str(path), "intake",
                                   "--event", str(event)], capture_output=True, text=True)
