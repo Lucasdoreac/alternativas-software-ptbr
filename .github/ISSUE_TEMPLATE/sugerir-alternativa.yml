@@ -1,0 +1,68 @@
+name: Sugerir alternativa
+description: Indique um software gratuito ou de código aberto para o catálogo. Ele é conferido e revisado antes de aparecer no site.
+title: "Sugestão: "
+labels: ["sugestao"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Obrigado pela sugestão. Uma rotina confere o site oficial e a licença, e uma pessoa revisa antes da publicação.
+        Este issue é público: não escreva dados pessoais.
+  - type: input
+    id: name
+    attributes:
+      label: Nome da alternativa
+      placeholder: "Ex.: Krita"
+    validations:
+      required: true
+  - type: input
+    id: url
+    attributes:
+      label: Site oficial do projeto
+      description: Endereço https do próprio projeto (site ou repositório), não de loja ou portal de downloads.
+      placeholder: "https://krita.org/"
+    validations:
+      required: true
+  - type: input
+    id: reference
+    attributes:
+      label: Substitui qual software
+      placeholder: "Ex.: Adobe Photoshop"
+    validations:
+      required: true
+  - type: dropdown
+    id: area
+    attributes:
+      label: Área
+      options:
+        - Edição de imagem
+        - Ilustração vetorial
+        - Escritório
+        - Edição de vídeo
+        - Anotações
+        - Outra
+    validations:
+      required: true
+  - type: input
+    id: area_other
+    attributes:
+      label: Área nova (só se escolheu Outra)
+  - type: checkboxes
+    id: platforms
+    attributes:
+      label: Sistemas em que roda
+      options:
+        - label: macOS
+        - label: Windows
+        - label: Linux
+        - label: BSD
+        - label: Android
+        - label: iOS
+        - label: Web
+  - type: textarea
+    id: why
+    attributes:
+      label: Por que é uma boa alternativa
+      description: Em suas palavras, que trabalho ela faz. Não cole texto de outros sites.
+    validations:
+      required: true
