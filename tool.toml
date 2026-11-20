@@ -1,0 +1,26 @@
+# ESCOPO: manifesto de ferramenta de primeira classe do catalogador de alternativas de software.
+[tool]
+name = "troca-justa"
+purpose = "catalogar alternativas de software com fonte, licença, sistemas e data de conferência; sugestões viram PR para revisão"
+repo = "github.com/Lucasdoreac/alternativas-software-ptbr"
+
+[ui]
+url = "https://lucasdoreac.github.io/alternativas-software-ptbr/"
+suggest = "https://github.com/Lucasdoreac/alternativas-software-ptbr/issues/new?template=sugerir-alternativa.yml"
+
+[cli]
+command = "./catalog-tool search Photoshop --json"
+
+[agent]
+api = "GitHub Issues (formulário sugerir-alternativa) e PRs do catalogador; leitura em docs/catalog.json"
+
+[automation]
+workflow = ".github/workflows/catalogador.yml"
+
+[health]
+command = "./catalog-tool health"
+expect = "\"ready\": true"
+
+[evidence]
+use_path = "abrir o site, buscar Adobe Photoshop, ver o GIMP com fonte e data; abrir o link de sugestão"
+verified_on = "2026-11-20"

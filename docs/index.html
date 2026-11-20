@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#f2f3ed">
+    <meta name="description" content="Pesquise o software que você usa e descubra opções gratuitas ou de código aberto na mesma área. Busca no navegador, sem rastreamento.">
+    <title>Troca Justa — alternativas de software</title>
+    <link rel="stylesheet" href="./styles.css">
+    <script type="module" src="./app.js"></script>
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="wordmark" href="./" aria-label="Troca Justa, início">
+        <span class="mark" aria-hidden="true">↗</span>
+        <span>troca<span class="wordmark-light">justa</span></span>
+      </a>
+      <nav aria-label="Navegação principal">
+        <a class="top-link" href="#como-funciona">Como funciona <span aria-hidden="true">↓</span></a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero" aria-labelledby="title">
+        <p class="eyebrow"><span class="eyebrow-dot"></span> FERRAMENTAS DIGITAIS, COM MAIS LIBERDADE</p>
+        <h1 id="title">Encontre um jeito<br><em>mais livre</em> de fazer.</h1>
+        <p class="intro">Pesquise o software que você usa e descubra opções gratuitas ou de código aberto na mesma área.</p>
+
+        <form id="search-form" class="search" role="search">
+          <label class="sr-only" for="query">Buscar um software</label>
+          <span class="search-icon" aria-hidden="true">⌕</span>
+          <input id="query" name="q" type="search" placeholder="Ex.: Photoshop, Illustrator, Office…" autocomplete="off" aria-describedby="search-help">
+          <button type="submit">Buscar <span aria-hidden="true">↗</span></button>
+        </form>
+        <p id="search-help" class="search-help">A busca acontece no seu navegador. Nenhum termo é enviado.</p>
+        <div id="popular" class="popular" aria-label="Buscas rápidas"></div>
+      </section>
+
+      <section id="catalogo" class="results" aria-labelledby="results-title" aria-live="polite">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow eyebrow-muted">CATÁLOGO INDEPENDENTE</p>
+            <h2 id="results-title">Alguns bons pontos de partida</h2>
+          </div>
+          <label class="filter-label" for="category-filter">Área
+            <select id="category-filter"><option value="">Todas</option></select>
+          </label>
+        </div>
+        <p id="result-count" class="result-count"></p>
+        <div id="cards" class="cards"></div>
+        <p id="empty-state" class="empty-state" hidden></p>
+        <p id="ranking-note" class="ranking-note" hidden></p>
+        <p class="suggest">Conhece uma alternativa que falta aqui? <a id="suggest-link" href="https://github.com/Lucasdoreac/alternativas-software-ptbr/issues/new?template=sugerir-alternativa.yml" target="_blank" rel="noopener noreferrer">Sugira pelo GitHub ↗</a>. A sugestão é conferida e revisada antes de aparecer no catálogo.</p>
+      </section>
+
+      <section id="como-funciona" class="how">
+        <div class="how-number">01</div>
+        <div>
+          <p class="eyebrow eyebrow-muted">COMO O CATÁLOGO FUNCIONA</p>
+          <h2>Mesma área. Fonte sempre visível.</h2>
+          <p>Cada alternativa vem com a página oficial do projeto, a licença, os sistemas em que roda e a data em que a fonte foi conferida. Estar na mesma área não quer dizer ter os mesmos recursos: confira o que você precisa antes de trocar.</p>
+          <p>Sugestões entram como pendentes. Uma rotina automática confere o link do projeto e a licença na fonte oficial, e uma pessoa revisa antes da publicação. Nada é copiado de outros catálogos.</p>
+        </div>
+        <div class="how-note"><span aria-hidden="true">✳</span><br>Busca no navegador.<br>Fonte visível.<br>Sem rastreadores.</div>
+      </section>
+    </main>
+
+    <footer>
+      <a class="wordmark footer-mark" href="./"><span class="mark" aria-hidden="true">↗</span><span>troca<span class="wordmark-light">justa</span></span></a>
+      <p>Projeto independente, sem vínculo com os softwares listados.</p>
+      <p class="footer-small">Site de referência: <a href="https://www.techrobinhood.com/updowndownleftrightleftrightbastart/" target="_blank" rel="noopener noreferrer">Tech Robin Hood ↗</a>. Catálogo próprio; não reproduz dados ou textos do original.</p>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,86 @@
+# ESCOPO: transforma uma sugestão (issue com o rótulo "sugestao") em PR com o registro pendente de revisão,
+# e confere toda semana que o catálogo continua válido. Não publica nada sozinho: quem publica é o merge da PR.
+name: Catalogador
+
+on:
+  issues:
+    # Só "opened": o formulário já aplica o rótulo, e "labeled" dispararia a mesma sugestão duas vezes.
+    types: [opened]
+  schedule:
+    - cron: "17 9 * * 1"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+  issues: write
+
+concurrency:
+  group: catalogador
+  cancel-in-progress: false
+
+jobs:
+  sugestao:
+    if: github.event_name == 'issues' && contains(github.event.issue.labels.*.name, 'sugestao')
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Registrar a sugestão
+        id: intake
+        # O corpo do issue é texto de qualquer visitante: só o Python o lê, a partir do arquivo do evento.
+        run: |
+          set +e
+          python3 catalog_tool.py intake --event "$GITHUB_EVENT_PATH" > intake.json
+          echo "code=$?" >> "$GITHUB_OUTPUT"
+          cat intake.json
+      - name: Abrir a PR para revisão
+        if: steps.intake.outputs.code == '0'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          ISSUE: ${{ github.event.issue.number }}
+        run: |
+          set -eu
+          branch="sugestao/issue-${ISSUE}"
+          software=$(python3 -c "import json;print(json.load(open('intake.json'))['software_id'])")
+          git config user.name "catalogador"
+          git config user.email "catalogador@users.noreply.github.com"
+          git switch -c "$branch"
+          git add docs/catalog.json
+          git commit -m "catálogo: sugestão do issue #${ISSUE} (${software}), pendente de revisão"
+          git push --force-with-lease origin "$branch"
+          python3 - <<'PY' > pr-body.md
+          import json, os
+          d = json.load(open("intake.json"))
+          c = d["check"]
+          print(f"Registro criado a partir do issue #{os.environ['ISSUE']} como **link informado, não conferido**.\n")
+          print("Checagem automática:\n")
+          print(f"- site respondeu: {'sim' if c['reachable'] else 'não'}")
+          if c.get("github_repo"):
+              print(f"- repositório: {c['github_repo']}; licença declarada: {c.get('license') or 'nenhuma'}; último push: {c.get('pushed_at') or 'desconhecido'}; arquivado: {c.get('archived')}")
+          print("\nAntes de mesclar: leia a fonte oficial, reescreva o resumo em palavras próprias, confira preço, licença e sistemas e, se a fonte confirmar, mude `source_state` para `checked` com `checked_at`.\n")
+          print(f"Closes #{os.environ['ISSUE']}")
+          PY
+          gh pr create --base main --head "$branch" --title "Sugestão do issue #${ISSUE}: ${software}" --body-file pr-body.md
+          gh issue comment "$ISSUE" --body "Obrigado. A sugestão virou uma PR para revisão; ela aparece no site depois de conferida."
+      - name: Responder quando a sugestão não pode virar registro
+        if: steps.intake.outputs.code == '3'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          ISSUE: ${{ github.event.issue.number }}
+        run: |
+          msg=$(python3 -c "import json;print(json.load(open('intake.json'))['error'])")
+          gh issue comment "$ISSUE" --body "Não consegui registrar a sugestão: ${msg} Edite o issue ou abra outro."
+
+  conferencia:
+    if: github.event_name != 'issues'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python3 catalog_tool.py validate
+      - run: python3 -m unittest discover -s tests -v
