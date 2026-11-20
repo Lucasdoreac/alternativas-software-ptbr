@@ -2,75 +2,332 @@
   "schema_version": 1,
   "updated_at": "2026-11-20",
   "categories": [
-    { "id": "imagem", "name": "Edição de imagem", "aliases": ["foto", "pixel", "raster"] },
-    { "id": "vetor", "name": "Ilustração vetorial", "aliases": ["svg", "desenho vetorial", "gráficos vetoriais"] },
-    { "id": "escritorio", "name": "Escritório", "aliases": ["documentos", "planilha", "apresentação", "office"] },
-    { "id": "video", "name": "Edição de vídeo", "aliases": ["montagem", "vídeo", "timeline"] },
-    { "id": "anotacoes", "name": "Anotações", "aliases": ["notas", "caderno", "tarefas"] }
+    {
+      "id": "imagem",
+      "name": "Edição de imagem",
+      "aliases": [
+        "foto",
+        "pixel",
+        "raster"
+      ]
+    },
+    {
+      "id": "vetor",
+      "name": "Ilustração vetorial",
+      "aliases": [
+        "svg",
+        "desenho vetorial",
+        "gráficos vetoriais"
+      ]
+    },
+    {
+      "id": "escritorio",
+      "name": "Escritório",
+      "aliases": [
+        "documentos",
+        "planilha",
+        "apresentação",
+        "office"
+      ]
+    },
+    {
+      "id": "video",
+      "name": "Edição de vídeo",
+      "aliases": [
+        "montagem",
+        "vídeo",
+        "timeline"
+      ]
+    },
+    {
+      "id": "anotacoes",
+      "name": "Anotações",
+      "aliases": [
+        "notas",
+        "caderno",
+        "tarefas"
+      ]
+    }
   ],
   "references": [
-    { "id": "photoshop", "name": "Adobe Photoshop", "aliases": ["photoshop", "adobe photoshop", "ps"], "category_ids": ["imagem"] },
-    { "id": "illustrator", "name": "Adobe Illustrator", "aliases": ["illustrator", "adobe illustrator", "ai"], "category_ids": ["vetor"] },
-    { "id": "microsoft-365", "name": "Microsoft 365 / Office", "aliases": ["office", "microsoft office", "microsoft 365", "word", "excel", "powerpoint"], "category_ids": ["escritorio"] },
-    { "id": "premiere", "name": "Adobe Premiere Pro", "aliases": ["premiere", "premiere pro", "adobe premiere"], "category_ids": ["video"] },
-    { "id": "evernote", "name": "Evernote", "aliases": ["evernote"], "category_ids": ["anotacoes"] }
+    {
+      "id": "photoshop",
+      "name": "Adobe Photoshop",
+      "aliases": [
+        "photoshop",
+        "adobe photoshop",
+        "ps"
+      ],
+      "category_ids": [
+        "imagem"
+      ]
+    },
+    {
+      "id": "illustrator",
+      "name": "Adobe Illustrator",
+      "aliases": [
+        "illustrator",
+        "adobe illustrator",
+        "ai"
+      ],
+      "category_ids": [
+        "vetor"
+      ]
+    },
+    {
+      "id": "microsoft-365",
+      "name": "Microsoft 365 / Office",
+      "aliases": [
+        "office",
+        "microsoft office",
+        "microsoft 365",
+        "word",
+        "excel",
+        "powerpoint"
+      ],
+      "category_ids": [
+        "escritorio"
+      ]
+    },
+    {
+      "id": "premiere",
+      "name": "Adobe Premiere Pro",
+      "aliases": [
+        "premiere",
+        "premiere pro",
+        "adobe premiere"
+      ],
+      "category_ids": [
+        "video"
+      ]
+    },
+    {
+      "id": "evernote",
+      "name": "Evernote",
+      "aliases": [
+        "evernote"
+      ],
+      "category_ids": [
+        "anotacoes"
+      ]
+    }
   ],
   "software": [
     {
-      "id": "gimp", "name": "GIMP", "aliases": ["GNU Image Manipulation Program"],
+      "id": "gimp",
+      "name": "GIMP",
+      "aliases": [
+        "GNU Image Manipulation Program"
+      ],
       "summary": "Edição e composição de imagens. Confira os recursos de que você precisa antes de migrar.",
-      "category_ids": ["imagem"], "pricing": "free", "license": "GPL-3.0-or-later",
-      "platforms": ["macOS", "Windows", "Linux"], "install_kind": "official-site",
-      "url": "https://www.gimp.org/", "source_url": "https://www.gimp.org/about/", "source_state": "checked", "checked_at": "2026-11-20",
+      "category_ids": [
+        "imagem"
+      ],
+      "pricing": "free",
+      "license": "GPL-3.0-or-later",
+      "platforms": [
+        "macOS",
+        "Windows",
+        "Linux"
+      ],
+      "install_kind": "official-site",
+      "url": "https://www.gimp.org/",
+      "source_url": "https://www.gimp.org/about/",
+      "source_state": "checked",
+      "checked_at": "2026-11-20",
       "evidence_note": "A página oficial descreve retoque, composição e criação de imagens e identifica o projeto como software livre sob GPL."
     },
     {
-      "id": "inkscape", "name": "Inkscape", "aliases": ["inkscape svg"],
+      "id": "inkscape",
+      "name": "Inkscape",
+      "aliases": [
+        "inkscape svg"
+      ],
       "summary": "Criação e edição de ilustrações vetoriais; SVG é o formato nativo do projeto.",
-      "category_ids": ["vetor"], "pricing": "free", "license": "GPL",
-      "platforms": ["macOS", "Windows", "Linux"], "install_kind": "official-site",
-      "url": "https://inkscape.org/", "source_url": "https://github.com/inkscape/inkscape", "source_state": "checked", "checked_at": "2026-11-20",
+      "category_ids": [
+        "vetor"
+      ],
+      "pricing": "free",
+      "license": "GPL",
+      "platforms": [
+        "macOS",
+        "Windows",
+        "Linux"
+      ],
+      "install_kind": "official-site",
+      "url": "https://inkscape.org/",
+      "source_url": "https://github.com/inkscape/inkscape",
+      "source_state": "checked",
+      "checked_at": "2026-11-20",
       "evidence_note": "O repositório oficial descreve o Inkscape como editor vetorial livre e aberto baseado em SVG."
     },
     {
-      "id": "libreoffice", "name": "LibreOffice", "aliases": ["writer", "calc", "impress"],
+      "id": "libreoffice",
+      "name": "LibreOffice",
+      "aliases": [
+        "writer",
+        "calc",
+        "impress"
+      ],
       "summary": "Suíte com editor de texto, planilha, apresentações e outras ferramentas de escritório.",
-      "category_ids": ["escritorio"], "pricing": "free", "license": "MPL-2.0",
-      "platforms": ["macOS", "Windows", "Linux"], "install_kind": "official-site",
-      "url": "https://www.libreoffice.org/", "source_url": "https://www.libreoffice.org/faq/", "source_state": "checked", "checked_at": "2026-11-20",
+      "category_ids": [
+        "escritorio"
+      ],
+      "pricing": "free",
+      "license": "MPL-2.0",
+      "platforms": [
+        "macOS",
+        "Windows",
+        "Linux"
+      ],
+      "install_kind": "official-site",
+      "url": "https://www.libreoffice.org/",
+      "source_url": "https://www.libreoffice.org/faq/",
+      "source_state": "checked",
+      "checked_at": "2026-11-20",
       "evidence_note": "A FAQ oficial informa que a suíte é gratuita e de código aberto, inclusive para uso comercial."
     },
     {
-      "id": "kdenlive", "name": "Kdenlive", "aliases": ["kde non-linear video editor"],
+      "id": "kdenlive",
+      "name": "Kdenlive",
+      "aliases": [
+        "kde non-linear video editor"
+      ],
       "summary": "Editor não linear com linha do tempo, efeitos, transições, áudio e legendas.",
-      "category_ids": ["video"], "pricing": "free", "license": "GPL",
-      "platforms": ["macOS", "Windows", "Linux", "BSD"], "install_kind": "official-site",
-      "url": "https://kdenlive.org/en/", "source_url": "https://kdenlive.org/en/", "source_state": "checked", "checked_at": "2026-11-20",
+      "category_ids": [
+        "video"
+      ],
+      "pricing": "free",
+      "license": "GPL",
+      "platforms": [
+        "macOS",
+        "Windows",
+        "Linux",
+        "BSD"
+      ],
+      "install_kind": "official-site",
+      "url": "https://kdenlive.org/en/",
+      "source_url": "https://kdenlive.org/en/",
+      "source_state": "checked",
+      "checked_at": "2026-11-20",
       "evidence_note": "A página oficial apresenta o Kdenlive como editor livre e aberto; também informa suporte a macOS."
     },
     {
-      "id": "shotcut", "name": "Shotcut", "aliases": ["shotcut video editor"],
+      "id": "shotcut",
+      "name": "Shotcut",
+      "aliases": [
+        "shotcut video editor"
+      ],
       "summary": "Editor de vídeo multiplataforma com suporte a formatos variados e edição em linha do tempo.",
-      "category_ids": ["video"], "pricing": "free", "license": "GPL-3.0",
-      "platforms": ["macOS", "Windows", "Linux"], "install_kind": "official-site",
-      "url": "https://www.shotcut.org/", "source_url": "https://www.shotcut.org/", "source_state": "checked", "checked_at": "2026-11-20",
+      "category_ids": [
+        "video"
+      ],
+      "pricing": "free",
+      "license": "GPL-3.0",
+      "platforms": [
+        "macOS",
+        "Windows",
+        "Linux"
+      ],
+      "install_kind": "official-site",
+      "url": "https://www.shotcut.org/",
+      "source_url": "https://www.shotcut.org/",
+      "source_state": "checked",
+      "checked_at": "2026-11-20",
       "evidence_note": "O site oficial descreve o Shotcut como gratuito, aberto e multiplataforma, incluindo macOS."
     },
     {
-      "id": "joplin", "name": "Joplin", "aliases": ["joplin notes", "joplin tasks"],
+      "id": "joplin",
+      "name": "Joplin",
+      "aliases": [
+        "joplin notes",
+        "joplin tasks"
+      ],
       "summary": "Aplicativo de notas e tarefas, com cadernos, busca e acesso sem conexão.",
-      "category_ids": ["anotacoes"], "pricing": "free", "license": "AGPL-3.0",
-      "platforms": ["macOS", "Windows", "Linux", "Android", "iOS"], "install_kind": "official-site",
-      "url": "https://joplinapp.org/", "source_url": "https://joplinapp.org/help/", "source_state": "checked", "checked_at": "2026-11-20",
+      "category_ids": [
+        "anotacoes"
+      ],
+      "pricing": "free",
+      "license": "AGPL-3.0",
+      "platforms": [
+        "macOS",
+        "Windows",
+        "Linux",
+        "Android",
+        "iOS"
+      ],
+      "install_kind": "official-site",
+      "url": "https://joplinapp.org/",
+      "source_url": "https://joplinapp.org/help/",
+      "source_state": "checked",
+      "checked_at": "2026-11-20",
       "evidence_note": "A documentação oficial descreve notas e tarefas, uso offline e disponibilidade para macOS e outros sistemas."
+    },
+    {
+      "id": "krita",
+      "name": "Krita",
+      "aliases": [],
+      "summary": "Pintura digital e edição de imagens com camadas, pincéis e máscaras; útil para quem usa o Photoshop para ilustração.",
+      "category_ids": [
+        "imagem"
+      ],
+      "pricing": "unknown",
+      "license": "não conferida",
+      "platforms": [
+        "macOS",
+        "Windows",
+        "Linux"
+      ],
+      "install_kind": "official-site",
+      "url": "https://krita.org/",
+      "source_url": "https://krita.org/",
+      "source_state": "reported",
+      "checked_at": null,
+      "evidence_note": "Checagem automática em 2026-11-20: o site respondeu. Falta a revisão humana da fonte."
     }
   ],
   "relations": [
-    { "reference_id": "photoshop", "software_id": "gimp", "match": "same_category", "note": "Ambos trabalham com edição e composição de imagens; confira compatibilidade de arquivos e fluxo de trabalho." },
-    { "reference_id": "illustrator", "software_id": "inkscape", "match": "same_category", "note": "Ambos atendem a fluxos de ilustração vetorial; confira recursos e compatibilidade dos arquivos." },
-    { "reference_id": "microsoft-365", "software_id": "libreoffice", "match": "same_category", "note": "Suítes de produtividade com documentos, planilhas e apresentações; formatos e colaboração podem diferir." },
-    { "reference_id": "premiere", "software_id": "kdenlive", "match": "same_category", "note": "Ambos são editores não lineares; compare recursos, desempenho e formatos antes de migrar." },
-    { "reference_id": "premiere", "software_id": "shotcut", "match": "same_category", "note": "Ambos editam vídeo em linha do tempo; compare recursos, desempenho e formatos antes de migrar." },
-    { "reference_id": "evernote", "software_id": "joplin", "match": "same_category", "note": "Ambos organizam notas; sincronização e recursos de colaboração têm diferenças." }
+    {
+      "reference_id": "photoshop",
+      "software_id": "gimp",
+      "match": "same_category",
+      "note": "Ambos trabalham com edição e composição de imagens; confira compatibilidade de arquivos e fluxo de trabalho."
+    },
+    {
+      "reference_id": "illustrator",
+      "software_id": "inkscape",
+      "match": "same_category",
+      "note": "Ambos atendem a fluxos de ilustração vetorial; confira recursos e compatibilidade dos arquivos."
+    },
+    {
+      "reference_id": "microsoft-365",
+      "software_id": "libreoffice",
+      "match": "same_category",
+      "note": "Suítes de produtividade com documentos, planilhas e apresentações; formatos e colaboração podem diferir."
+    },
+    {
+      "reference_id": "premiere",
+      "software_id": "kdenlive",
+      "match": "same_category",
+      "note": "Ambos são editores não lineares; compare recursos, desempenho e formatos antes de migrar."
+    },
+    {
+      "reference_id": "premiere",
+      "software_id": "shotcut",
+      "match": "same_category",
+      "note": "Ambos editam vídeo em linha do tempo; compare recursos, desempenho e formatos antes de migrar."
+    },
+    {
+      "reference_id": "evernote",
+      "software_id": "joplin",
+      "match": "same_category",
+      "note": "Ambos organizam notas; sincronização e recursos de colaboração têm diferenças."
+    },
+    {
+      "reference_id": "photoshop",
+      "software_id": "krita",
+      "match": "same_category",
+      "note": "Sugerida no issue #2. Pintura digital e edição de imagens com camadas, pincéis e máscaras; útil para quem usa o Photoshop para ilustração."
+    }
   ]
 }
