@@ -267,23 +267,24 @@
       "id": "krita",
       "name": "Krita",
       "aliases": [],
-      "summary": "Pintura digital e edição de imagens com camadas, pincéis e máscaras; útil para quem usa o Photoshop para ilustração.",
+      "summary": "Programa de pintura e ilustração digital, com pincéis variados, camadas, assistentes de desenho e ferramentas de animação.",
       "category_ids": [
         "imagem"
       ],
-      "pricing": "unknown",
-      "license": "não conferida",
+      "pricing": "free",
+      "license": "GPL-3.0",
       "platforms": [
         "macOS",
         "Windows",
-        "Linux"
+        "Linux",
+        "Android"
       ],
       "install_kind": "official-site",
       "url": "https://krita.org/",
-      "source_url": "https://krita.org/",
-      "source_state": "reported",
-      "checked_at": null,
-      "evidence_note": "Checagem automática em 2026-11-20: o site respondeu. Falta a revisão humana da fonte."
+      "source_url": "https://krita.org/en/download/",
+      "source_state": "checked",
+      "checked_at": "2026-11-20",
+      "evidence_note": "O site oficial descreve o Krita como programa de pintura gratuito e de código aberto, sob GPL v3, com download para Windows, macOS, Linux (AppImage) e Android; iPad e iPhone não são suportados. Há versões pagas em lojas (Microsoft Store, Steam, Epic, Mac App Store) que financiam o desenvolvimento. O site não confirma edição geral de fotos."
     }
   ],
   "relations": [
@@ -326,8 +327,8 @@
     {
       "reference_id": "photoshop",
       "software_id": "krita",
-      "match": "same_category",
-      "note": "Sugerida no issue #2. Pintura digital e edição de imagens com camadas, pincéis e máscaras; útil para quem usa o Photoshop para ilustração."
+      "match": "partial",
+      "note": "Cobre a parte de pintura e ilustração digital do Photoshop; para retoque e composição de fotos, confira o GIMP."
     }
   ]
 }
