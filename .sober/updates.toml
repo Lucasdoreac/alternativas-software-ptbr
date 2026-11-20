@@ -1,0 +1,36 @@
+schema_version = 1
+
+[project]
+name = "alternativas-software-ptbr"
+authority = "owner"
+
+[policy]
+capability = "updates"
+version = 1
+enabled = true
+channel = "stable"
+auto_merge_risks = []
+auto_deploy_risks = []
+
+[policy.limits]
+max_concurrent_jobs = 1
+max_changed_packages = 10
+max_daily_jobs = 3
+
+[adapters]
+python = "uv"
+build_system = "pending"
+containers = "pending"
+system_packages = "pending"
+
+[gates]
+commands = []
+publish_ci_status = false
+
+[execution]
+adapter = "pending"
+
+[deployment]
+probes = []
+rollback = ""
+production_enabled = false

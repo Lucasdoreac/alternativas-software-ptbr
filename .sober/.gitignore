@@ -1,0 +1,6 @@
+update-vanguard.sqlite3
+update-vanguard.sqlite3-shm
+update-vanguard.sqlite3-wal
+update-vanguard-candidates/
+update-vanguard-scratch/
+update-vanguard-bridge/
